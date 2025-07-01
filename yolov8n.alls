@@ -1,0 +1,8 @@
+quantization_param([conv42, conv53, conv63], force_range_out=[0.0, 1.0])
+normalization1 = normalization([0.0, 0.0, 0.0], [255.0, 255.0, 255.0])
+change_output_activation(conv42, sigmoid)
+change_output_activation(conv53, sigmoid)
+change_output_activation(conv63, sigmoid)
+nms_postprocess("../../postprocess_config/yolov8n_nms_config.json", meta_arch=yolov8, engine=cpu)
+
+allocator_param(width_splitter_defuse=disabled)

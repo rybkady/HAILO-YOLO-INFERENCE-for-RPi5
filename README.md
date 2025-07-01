@@ -41,6 +41,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
   - Ubuntu
   - Intel i7-class CPU or better
   - At least 16 GB RAM
+  - Docker installed
 
 - **Hailo Software Suite 2025-04 Docker image** installed and run on PC (see official guide)
 

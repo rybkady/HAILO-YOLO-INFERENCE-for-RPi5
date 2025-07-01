@@ -127,7 +127,7 @@ sudo cp /workspace/yolov8n_nms_config.json \
 hailomz compile yolov8n \
   --ckpt=/workspace/flies.onnx \
   --hw-arch hailo8 \
-  --calib-path /workspace/images \
+  --calib-path /workspace/calibration_images \
   --classes 1 \
   --performance
 ```

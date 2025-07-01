@@ -29,7 +29,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
 
 ## ⚙️ Requirements
 
-- **HAILO AI HAT** (tested with HAILO-8 chip on Raspberry Pi 5)  
+- **Raspberry Pi 5 + HAILO AI HAT** (tested with HAILO-8 chip)  
   🔧 Follow HAILO’s official guidance to update RPi5 firmware and enable PCIe 3.0.
 
 - **Hailo-All RPi package** installed:
@@ -44,12 +44,8 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
 
 - **Hailo Software Suite 2025-04 Docker image** installed (see official guide)
 
-- **Python 3.9+** (tested with 3.11)
+- **Python 3.9+** on Raspberry Pi (tested with 3.11) 
 
-- Files (available in this repo):
-  - `flies.onnx` — ONNX-exported model
-  - `flies.hef` — compiled HEF model
-  - Sample JPEG images in `/images`
 
 ---
 
@@ -57,7 +53,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
 
 ### 1. Export YOLO model to ONNX
 
-If you have Ultralytics installed:
+If you have Ultralytics installed on yor PC or Raspberry Pi, just run the console command:
 
 ```bash
 yolo export model=flies.pt format=onnx

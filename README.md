@@ -107,10 +107,10 @@ Changes inside Docker are ephemeral, so we will take these modified files on the
 ### 4. Replace configs inside Docker
 
 ```bash
-sudo cp /workspace/yolov8n.alls \
+sudo cp /workspace/config_changes/yolov8n.alls \
   /local/workspace/hailo_model_zoo/hailo_model_zoo/cfg/alls/generic/yolov8n.alls
 
-sudo cp /workspace/yolov8n_nms_config.json \
+sudo cp /workspace/config_changes/yolov8n_nms_config.json \
   /local/workspace/hailo_model_zoo/hailo_model_zoo/cfg/postprocess_config/yolov8n_nms_config.json
 ```
 

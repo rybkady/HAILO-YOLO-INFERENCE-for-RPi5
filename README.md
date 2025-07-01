@@ -43,7 +43,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
   - At least 16 GB RAM
   - Docker installed
 
-- **Hailo Software Suite 2025-04 Docker image** installed and run on PC (Taken from HAILO Developers Zone, see official installation guide)
+- **Hailo Software Suite 2025-04 Docker image** installed and run on PC (Downloaded from HAILO Developers Zone, see official installation guide)
 
 - **Python 3.9+** on Raspberry Pi (tested with 3.11) 
 

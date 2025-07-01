@@ -179,8 +179,19 @@ Both scripts normalize outputs to match.
 `python hailo_inference.py`
 
 📸 Visual Comparison
-ONNX Detection	                                HEF Detection
+ONNX Detection (left) v HEF Detection (right)
+
+![image](https://github.com/user-attachments/assets/bfe7858b-7bf2-4cf3-adeb-f779704fa108) ![image](https://github.com/user-attachments/assets/a6874eab-3a45-4caa-9889-b356f23dd883)
+
+![image](https://github.com/user-attachments/assets/ec1e0c12-4f39-4155-a79f-e95381471c42) ![image](https://github.com/user-attachments/assets/86e56eff-9ee2-4840-8066-142b117b0e63)
+
+
+
+
+
+
 	
+
 	
 
 ✅ Inference consistency confirmed  

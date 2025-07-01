@@ -67,46 +67,44 @@ Alternatively, you can use the pre-exported `flies.onnx` from this repo.
 
 ---
 
+
 ### 2. Run HAILO Software Suite Docker container on your PC
+Clone the repo:
+```
+git clone https://github.com/rybkady/HAILO-YOLO-INFERENCE-for-RPi5.git
+```
+It's assumed that cloned directory structure stored into /home/user folder.
+Now run the docker environment:
+
 
 ```bash
 docker run -it --rm \
-  -v /path/to/external/drive:/workspace \
+  -v "$(pwd)/HAILO-YOLO-INFERENCE-for-RPi5:/workspace" \
   hailo_ai_sw_suite_2025-04:1 \
   /bin/bash
 ```
 
-> 💡 Use an external drive (e.g., mounted USB) for `/workspace` because Docker will discard all internal changes after restart.
+> 💡 Docker will discard all internal changes after restart. That's why we need to mount repo as as an external folder
 
 ---
 
-### 3. Copy required files into `/workspace`
-
-- `flies.onnx`
-- Edited config files:
-  - `yolov8n.alls`
-  - `yolov8n_nms_config.json`
-- A folder of calibration images: `/images`
-
----
-
-### 4. Why config files may need modification (or not)
+### 3. Why config files may need modification (or not)
 
 🧠 **Explanation**:  
 This model has only **one class**, which caused normalization errors during `.hef` conversion. A workaround was found in this forum thread:  
 [HAILO forum discussion](https://community.hailo.ai/t/problem-with-model-optimization/1648/25)
 
-You need to:
+We need to:
 - Modify `yolov8n.alls` to set quantization params
 - Also, since it's 320x320 model, modify `yolov8n_nms_config.json` for 320×320 resolution
 
-Since changes inside Docker are ephemeral, keep these modified files on the host and **copy them into the container before compilation**.
+Changes inside Docker are ephemeral, so we will take these modified files on the host and **copy them into the container before compilation**.
 
 > ⚠️ You *might* be able to pass these files via `hailomz` CLI flags, but I didn’t explore that, just replaced the originals.
 
 ---
 
-### 5. Replace configs inside Docker
+### 4. Replace configs inside Docker
 
 ```bash
 sudo cp /workspace/yolov8n.alls \
@@ -116,9 +114,8 @@ sudo cp /workspace/yolov8n_nms_config.json \
   /local/workspace/hailo_model_zoo/hailo_model_zoo/cfg/postprocess_config/yolov8n_nms_config.json
 ```
 
----
 
-### 6. Run HEF compilation
+### 5. Run HEF compilation
 
 ```bash
 hailomz compile yolov8n \
@@ -132,22 +129,27 @@ hailomz compile yolov8n \
 **Parameters**:
 - `--ckpt` – path to ONNX model
 - `--hw-arch` – `hailo8` or `hailo8l`
-- `--calib-path` – path to folder with sample images
+- `--calib-path` – path to folder with calibration images
 
 > 🕐 **Note**: On Intel i7-9700K with 32 GB RAM, this took ~15 minutes.  
-> GPU acceleration is possible but wasn't tested here.
+> GPU acceleration is possible but wasn't tested here. Compiler may throw warnings about that.
 
 ---
 
-### 7. Save output files
+### 6. Save output files
 
-After successful compilation, copy `.hef` and `.har` files back to your host:
+After successful compilation, you will see something like this:
+![image](https://github.com/user-attachments/assets/c99353ef-1a2d-4c15-b436-e3049f660201)
+
+Now copy `.hef` and `.har` files back to your host:
 
 ```bash
 sudo cp yolov8n.* /workspace
 ```
 
 ---
+Type 'exit' to leave Docker environment
+Don't shutdown your PC for now, we'll need to copy some files to Raspberry pi in next step
 
 ## 📦 Step 2: Comparing ONNX and HEF Outputs
 
@@ -158,28 +160,30 @@ Ensure the RPi5 connected to your HAILO AI HAT and has the following installed:
     ultralytics, hailo-all, opencv-python, numpy and their own dependencies.   
     Make sure you're in right VENV if you're set it
 
-Use these scripts on Raspberry Pi:
+Copy these files in some folder on Raspberry Pi from your PC:
 
-    yolo_inference.py – runs ONNX inference
+    `yolo_inference.py`    – runs ONNX inference
 
-    hailo_inference.py – runs HEF inference
+    `hailo_inference.py`   – runs HEF inference
 
-🧠 HEF output differs in:
+    `yolov8n.hef`          - HEF model we compiled    
 
-    Relative vs absolute coordinates
+    `test.jpg`             - test image for inference
 
-    YXYX vs XYXY format
+🧠 Note: HEF output differs in:
+- Relative vs absolute coordinates
+- YXYX vs XYXY format
 
-Both scripts normalize outputs to match.
+Both python scripts will normalize outputs to match.
   
-  ▶️ Run both:
+  ▶️ Run the scripts:
 
 `python yolo_inference.py`  
 
 `python hailo_inference.py`
 
-📸 Visual Comparison
-ONNX Detection (left) v HEF Detection (right)
+📸 Visual Comparison of results
+ONNX Detection (left) vs HEF Detection (right)
 
 ![image](https://github.com/user-attachments/assets/bfe7858b-7bf2-4cf3-adeb-f779704fa108) ![image](https://github.com/user-attachments/assets/a6874eab-3a45-4caa-9889-b356f23dd883)
 

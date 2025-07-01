@@ -37,7 +37,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
   sudo apt install hailo-all
   ```
 
-- A reasonably powerful PC (used for model compilation):
+- A reasonably powerful PC (used for HEF model compilation):
   - Ubuntu
   - Intel i7-class CPU or better
   - At least 16 GB RAM

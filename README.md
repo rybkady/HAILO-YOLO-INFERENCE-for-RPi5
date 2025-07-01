@@ -32,7 +32,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
 - **Raspberry Pi 5 + HAILO AI HAT** (tested with HAILO-8 chip)  
   🔧 Follow HAILO’s official guidance to update RPi5 firmware and enable PCIe 3.0.
 
-- **Hailo-All RPi package** installed:
+- **Hailo-All package** installed on Raspberry Pi:
   ```bash
   sudo apt install hailo-all
   ```
@@ -42,7 +42,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
   - Intel i7-class CPU or better
   - At least 16 GB RAM
 
-- **Hailo Software Suite 2025-04 Docker image** installed (see official guide)
+- **Hailo Software Suite 2025-04 Docker image** installed and run on PC (see official guide)
 
 - **Python 3.9+** on Raspberry Pi (tested with 3.11) 
 
@@ -66,7 +66,7 @@ Alternatively, you can use the pre-exported `flies.onnx` from this repo.
 
 ---
 
-### 2. Run HAILO Software Suite Docker container
+### 2. Run HAILO Software Suite Docker container on your PC
 
 ```bash
 docker run -it --rm \
@@ -157,7 +157,7 @@ Ensure the RPi5 connected to your HAILO AI HAT and has the following installed:
     ultralytics, hailo-all, opencv-python, numpy and their own dependencies.   
     Make sure you're in right VENV if you're set it
 
-Use these scripts:
+Use these scripts on Raspberry Pi:
 
     yolo_inference.py – runs ONNX inference
 

@@ -33,8 +33,8 @@ for i, box in enumerate(results[0].boxes.xyxy.cpu()):
     rel_y1 = y1 / h
     rel_x2 = x2 / w
     rel_y2 = y2 / h
-    print(f"Box {i+1} coords(native output): [{x1}, {y1}, {x2}, {y2}], confidence={conf:.2f}.")
-    print(f"Box {i+1} relative(calculated)=({rel_x1:.3f}, {rel_y1:.3f}, {rel_x2:.3f}, {rel_y2:.3f})")
+    print(f"Box {i} coords(native output): [{x1}, {y1}, {x2}, {y2}], confidence={conf:.2f}.")
+    print(f"Box {i} relative(calculated)=({rel_x1:.3f}, {rel_y1:.3f}, {rel_x2:.3f}, {rel_y2:.3f})")
  # Draw boxes on the original image
 for box in results[0].boxes.xyxy.cpu():
     x1, y1, x2, y2 = map(int, box)

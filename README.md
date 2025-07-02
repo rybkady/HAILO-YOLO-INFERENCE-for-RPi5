@@ -150,7 +150,7 @@ sudo cp yolov8n.* /workspace
 ```
 
 ---
-Type 'exit' to leave Docker environment
+Type 'exit' to leave Docker environment.
 Don't shutdown your PC for now, we'll need to copy some files to Raspberry pi in next step
 
 ## 📦 Step 2: Comparing ONNX and HEF Outputs
@@ -162,7 +162,7 @@ Ensure the RPi5 connected to your HAILO AI HAT and has the following installed:
     ultralytics, hailo-all, opencv-python, numpy and their own dependencies.   
     Make sure you're in right VENV if you're set it
 
-Copy these files in some folder on Raspberry Pi from your PC:
+Copy these files to some folder on Raspberry Pi from your PC:
 
     `yolo_inference.py`    – runs ONNX inference
 

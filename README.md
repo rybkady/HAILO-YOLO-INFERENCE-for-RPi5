@@ -130,7 +130,7 @@ hailomz compile yolov8n \
 
 **Parameters**:
 - `--ckpt` – path to ONNX model
-- `--hw-arch` – `hailo8` or `hailo8l`
+- `--hw-arch` – `hailo8` or `hailo8l` depending on what chip do you have in your AI HAT
 - `--calib-path` – path to folder with calibration images
 
 > 🕐 **Note**: On Intel i7-9700K with 32 GB RAM, this took ~15 minutes.  

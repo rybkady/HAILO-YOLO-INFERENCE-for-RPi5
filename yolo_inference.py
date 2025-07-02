@@ -6,9 +6,6 @@ from ultralytics import YOLO
 # Load model
 model = YOLO("flies.onnx")
 
-# Set image source directory
-image_dir = "images_val"
-
 # Set model parameters
 input_size = 320  # trained resolution
 conf_threshold = 0.4

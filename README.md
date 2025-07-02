@@ -75,7 +75,7 @@ Clone the repo:
 ```
 git clone https://github.com/rybkady/HAILO-YOLO-INFERENCE-for-RPi5.git
 ```
-It's assumed that cloned directory structure stored into /home/user folder.
+It's assumed that cloned directory structure stored into /home/%username% folder.
 Now run the docker environment:
 
 

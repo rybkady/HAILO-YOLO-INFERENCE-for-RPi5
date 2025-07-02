@@ -45,7 +45,7 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
   - Docker installed
 
 - **Registered account in HAILO Developers Zone** If you don't have it yet.
-- **Hailo Software Suite 2025-04 Docker image** installed and run on PC (Downloaded from HAILO Developers Zone, see official installation guide)
+- **Hailo Software Suite 2025-04 Docker image** installed and run on PC. Download it from HAILO Developers Zone, see official installation guide next to download link
 
 - **Python 3.9+** on Raspberry Pi (tested with 3.11) 
 

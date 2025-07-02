@@ -30,8 +30,9 @@ The model used here is a custom-trained `yolov8n` with a single class (`fly`) an
 ## ⚙️ Requirements
 
 - **Raspberry Pi 5 + HAILO AI HAT** (tested with HAILO-8 chip)  
-  🔧 Follow HAILO’s official guidance to update RPi5 firmware and enable PCIe 3.0.
-
+  🔧 Follow RPi’s official guidance to update RPi5 firmware and enable PCIe 3.0: [RPi AI kit](https://www.raspberrypi.com/documentation/accessories/ai-kit.html)
+  Also you may want to check this [RPi AI kit getting started](https://www.raspberrypi.com/documentation/computers/ai.html)
+  
 - **Hailo-All package** installed on Raspberry Pi:
   ```bash
   sudo apt install hailo-all

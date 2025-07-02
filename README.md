@@ -100,7 +100,7 @@ We need to:
 - Modify `yolov8n.alls` to set quantization params
 - Also, since it's 320x320 model, modify `yolov8n_nms_config.json` for 320×320 resolution
 
-Changes inside Docker are ephemeral, so we will take these modified files on the host and **copy them into the container before compilation**.
+Changes inside Docker are ephemeral, so we will take these modified files on the host and **copy them into the container before .HEF compilation**.
 
 > ⚠️ You *might* be able to pass these files via `hailomz` CLI flags, but I didn’t explore that, just replaced the originals.
 

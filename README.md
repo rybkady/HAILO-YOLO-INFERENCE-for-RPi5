@@ -168,7 +168,9 @@ Copy these files to some folder on Raspberry Pi from your PC:
 
     `hailo_inference.py`   – runs HEF inference
 
-    `yolov8n.hef`          - HEF model we compiled    
+    `yolov8n.hef`          - HEF model we compiled
+
+    'flies.onnx'           - ONNX format model
 
     `test.jpg`             - test image for inference
 
